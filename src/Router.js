@@ -12,6 +12,9 @@ const Home = () => {
 				style={{ position: "absolute", left: "50%", margin: "0 0 0 -1000px", zIndex: "-1" }}
 			/>
 			<Header>
+				<a href="/">
+					<ButtonLogo src="/img/logo.gif" />
+				</a>
 				<a href="/map">
 					<ButtonMap src="/img/menu01.gif" />
 				</a>
@@ -34,6 +37,34 @@ const List = () => {
 				style={{ position: "absolute", left: "50%", margin: "0 0 0 -1000px", zIndex: "-1" }}
 			/>
 			<Header>
+				<a href="/">
+					<ButtonLogo src="/img/logo.gif" />
+				</a>
+				<a href="/map">
+					<ButtonMap src="/img/menu01.gif" />
+				</a>
+				<a href="/list">
+					<ButtonList src="/img/menu02.gif" />
+				</a>
+				<a href="/creator">
+					<ButtonCreator src="/img/menu03.gif" />
+				</a>
+			</Header>
+		</Container>
+	);
+};
+const Creator = () => {
+	return (
+		<Container>
+			<img
+				src="/img/continue_page.png"
+				alt=""
+				style={{ position: "absolute", left: "50%", margin: "0 0 0 -1000px", zIndex: "-1" }}
+			/>
+			<Header>
+				<a href="/">
+					<ButtonLogo src="/img/logo.gif" />
+				</a>
 				<a href="/map">
 					<ButtonMap src="/img/menu01.gif" />
 				</a>
@@ -80,6 +111,13 @@ const ButtonCreator = styled.img`
 	left: 1332px;
 	top: 49px;
 `;
+const ButtonLogo = styled.img`
+	position: absolute;
+	width: 154px;
+	height: 46px;
+	top: 37px;
+	left: 300px;
+`;
 
 export default function Router() {
 	return (
@@ -87,6 +125,7 @@ export default function Router() {
 			<Route path="/" exact component={Home} />
 			<Route path="/map" exact component={App} />
 			<Route path="/list" exact component={List} />
+			<Route path="/creator" exact component={Creator} />
 		</Routes>
 	);
 }
