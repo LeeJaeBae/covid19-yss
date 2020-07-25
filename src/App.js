@@ -216,6 +216,10 @@ class App extends Component {
 	makeResult = () => {
 		const { companies } = this.state;
 		let array = [];
+		for (let j = 0; j < 200; j++) {
+			let initializing = document.getElementById(`result-${j}-discription`);
+			initializing ? (initializing.style.display = "none") : console.log();
+		}
 		for (let i = 0; i < companies.length; i++) {
 			array.push(
 				<>
@@ -236,6 +240,7 @@ class App extends Component {
 							this.setMarkerIcon(i, false);
 						}}
 						onClick={() => {
+							this.setMarkerIcon(i, true);
 							let child = document.getElementById(`result-${i}-discription`);
 							child.style.display = "block";
 						}}

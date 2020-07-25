@@ -80,9 +80,10 @@ const Creator = () => {
 };
 
 const Container = styled.div`
-	overflow-x: hidden;
+	position: relative;
+	/* overflow-x: hidden;
 	overflow-y: auto;
-	width: 100%;
+	width: 100%; */
 `;
 const Header = styled.div`
 	position: absolute;
