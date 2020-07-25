@@ -37,11 +37,6 @@
 
 -   [http://vue-syder.s3-website.ap-northeast-2.amazonaws.com](http://vue-syder.s3-website.ap-northeast-2.amazonaws.com/)
 
-### 깃허브(깃랩)
-
--   React :
--   Node JS : [https://github.com/kokomade98/Nodejs-project-Covid19_INFO](https://github.com/kokomade98/Nodejs-project-Covid19_INFO)
-
 ### 활용 데이터
 
 -   서울특별시 소독업 인허가 정보
