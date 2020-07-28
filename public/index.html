@@ -155,6 +155,108 @@
 				overflow-x: hidden;
 			}
 		</style>
+		<style>
+			div,
+			ul,
+			li,
+			a,
+			p {
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+			ol,
+			ul,
+			li {
+				list-style: none;
+			}
+			.list_wrap {
+				width: 1200px;
+				margin: 0 auto;
+				border-top: 1px solid #000;
+				display: inline-block;
+			}
+			.list_wrap .list_box {
+				position: relative;
+				width: 100%;
+				height: 90px;
+				padding: 0 40px;
+				box-sizing: border-box;
+				border-bottom: 1px solid #d9d9d9;
+			}
+			.list_wrap .list_box > ul {
+				float: left;
+			}
+			.list_wrap .list_box > ul li {
+				float: left;
+				line-height: 90px;
+				padding-right: 10px;
+				margin-right: 10px;
+				font-size: 14px;
+				color: #b5b5b5;
+				background: url(./img/page/search/page3_list_bar.gif) no-repeat right 50%;
+			}
+			.list_wrap .list_box > ul li:last-child {
+				background: none;
+			}
+			.list_wrap .list_box > ul li.tit {
+				font-weight: 600;
+				color: #000;
+			}
+			.list_wrap .list_box .equi_btn {
+				float: right;
+			}
+			.list_wrap .list_box .equi_btn a {
+				display: inline-block;
+				margin-top: 20px;
+			}
+
+			/* 보유장비보기 목록 */
+			.equi_box {
+				/* display:none; */
+				position: absolute;
+				top: 77px;
+				right: 0;
+				z-index: 1;
+				width: 460px;
+				height: 282px;
+				padding: 55px 0 0 55px;
+				box-sizing: border-box;
+				background: url(./img/page/search/equi_box_bg.png) no-repeat right 50%;
+			}
+			.equi_box p {
+				font-size: 18px;
+				font-weight: 600;
+				margin-bottom: 30px;
+			}
+			.equi_box .equi_box_list {
+				width: 100%;
+				display: inline-block;
+			}
+			.equi_box .equi_box_list ul {
+				float: left;
+			}
+			.equi_box .equi_box_list ul:first-child {
+				margin-right: 60px;
+			}
+			.equi_box .equi_box_list ul li {
+				font-size: 13px;
+				width: 140px;
+				color: #919191;
+				margin-bottom: 15px;
+			}
+			.equi_box .equi_box_list ul li span {
+				display: inline-block;
+				float: right;
+				font-weight: 600;
+				color: #000;
+			}
+			.equi_box_close {
+				position: absolute;
+				right: 35px;
+				top: 45px;
+			}
+		</style>
 		<link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
 		<link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
 		<link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />

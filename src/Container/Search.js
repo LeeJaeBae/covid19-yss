@@ -28,21 +28,172 @@ class Search extends Component {
 				}
 			})
 		);
+		this.setState({ searchStatus: "standby" });
 	};
 	searchPost = () => {
 		switch (this.state.searchStatus) {
 			case "standby":
 				return <Companies />;
 			case "pending":
-				return <Companies>pending</Companies>;
-			case "nothing":
 				return (
 					<Companies>
-						<Result>결과없음</Result>
+						(
+						<div className="list_wrap">
+							<div className="list_box">
+								<ul>
+									<li className="tit">대아환경(주)</li>
+									<li>서울특별시 강서구 화곡로24길 43 2층 (화곡동)</li>
+									<li>02-3446-3301</li>
+								</ul>
+								<div className="equi_btn">
+									<a href="#">
+										<img
+											src="/img/page/search/page3_list_btn.gif"
+											alt="보유장비 보기"
+										/>
+									</a>
+								</div>
+								{/* <!-- 보유장비보기 목록 --> */}
+
+								{/* <!-- //보유장비보기 목록 --> */}
+							</div>
+
+							{/* <!-- // 구분선 --> */}
+
+							<div className="list_box">
+								<ul>
+									<li className="tit">대아환경(주)</li>
+									<li>서울특별시 강서구 화곡로24길 43 2층 (화곡동)</li>
+									<li>02-3446-3301</li>
+								</ul>
+								<div className="equi_btn">
+									<a href="#">
+										<img
+											src="/img/page/search/page3_list_btn.gif"
+											alt="보유장비 보기"
+										/>
+									</a>
+								</div>
+							</div>
+						</div>
+						);
 					</Companies>
 				);
+			case "nothing":
+				return (
+					<div className="list_wrap">
+						<div className="list_box">
+							<ul>
+								<li className="tit"></li>
+								<li></li>
+								<li>검색 결과가 없습니다</li>
+							</ul>
+						</div>
+					</div>
+				);
 			case "done":
-				return <Companies rows={this.state.searchResult.length} />;
+				console.log(this.state.searchResult);
+				const companies = this.state.searchResult;
+
+				let array = [];
+				for (let i = 0; i < companies.length; i++) {
+					array.push(
+						<div className="list_box">
+							<ul>
+								<li className="tit">
+									<Title>{companies[i].BPLCNM}</Title>
+								</li>
+								<li>
+									<Address>
+										{companies[i].RDNWHLADDR
+											? companies[i].RDNWHLADDR
+											: companies[i].SITEWHLADDR}
+										{/* asfsdafawifebafiowabfiouwebweipubfaweoibwfesadfaewhbfoasdfasdfaiewbofiwebafiweabfoewaf */}
+									</Address>
+								</li>
+								<li>
+									<Contact>
+										{companies[i].SITETEL ? companies[i].SITETEL : "번호 없음"}
+									</Contact>
+								</li>
+							</ul>
+							<div
+								className="equi_btn"
+								style={{
+									position: "relative",
+									top: "calc(50% - 25px)",
+									cursor: "pointer",
+								}}
+								onClick={() => {
+									let target = document.getElementById(`equi-box-${i}`);
+									target.style.display = "block";
+								}}
+							>
+								<div>
+									<img
+										src="/img/page/search/page3_list_btn.gif"
+										alt="보유장비 보기"
+									/>
+								</div>
+							</div>
+							<Equi id={`equi-box-${i}`}>
+								<div className="equi_box">
+									<p>보유장비현황</p>
+									<div className="equi_box_list">
+										<ul>
+											<li>
+												초미립자살포기수
+												<span>{companies[i].MICROSPKLNUM}개</span>
+											</li>
+											<li>
+												방독면수 <span>{companies[i].GMKNUM}개</span>
+											</li>
+											<li>
+												휴대용소독기수
+												<span>{companies[i].HNDUSESTLZNUM}개</span>
+											</li>
+											<li>
+												보호안경수 <span>{companies[i].PROTGLSNUM}개</span>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												동력분무기수
+												<span>{companies[i].DYNPWSPRAYNUM}개</span>
+											</li>
+											<li>
+												보호용의복수
+												<span>{companies[i].PROTUSECLOTNUM}개</span>
+											</li>
+											<li>
+												수동식분무기수
+												<span>{companies[i].HDOPTDSPRAYNUM}개</span>
+											</li>
+											<li>
+												진공청소기수
+												<span>{companies[i].VACUCLERNUM}개</span>
+											</li>
+										</ul>
+									</div>
+									<div
+										className="equi_box_close"
+										onClick={() => {
+											let target = document.getElementById(`equi-box-${i}`);
+											target.style.display = "none";
+										}}
+										style={{ cursor: "pointer" }}
+									>
+										<img
+											src="/img/page/search/page3_box_close.gif"
+											alt="보유장비현황 닫기"
+										/>
+									</div>
+								</div>
+							</Equi>
+						</div>
+					);
+				}
+				return <div className="list_wrap">{array}</div>;
 			default:
 				break;
 		}
@@ -57,8 +208,8 @@ class Search extends Component {
 						type="text"
 						placeholder="업체명을 검색하세요."
 						id="search-bar"
-						onKeyUp={(e) => {
-							if (e.keyCode === 13) {
+						onKeyPress={(e) => {
+							if (e.key === "Enter") {
 								this.sendSearchTerm();
 							}
 						}}
@@ -67,7 +218,7 @@ class Search extends Component {
 						<BtnImg src="/img/page/search/page3_search_btn.gif" />
 					</SearchBtn>
 				</SearchContainer>
-				{this.searchPost()}
+				<Companies>{this.searchPost()}</Companies>
 				<Footer src="/img/partials/footer/copyright.png" />
 			</Container>
 		);
@@ -132,7 +283,7 @@ const SearchBtn = styled.div`
 	width: 100%;
 	height: 100%;
 
-	padding: 0 10px 0 10px;
+	padding: 0 0 0 10px;
 
 	background-color: black;
 	border-top-right-radius: 5px;
@@ -146,27 +297,31 @@ const SearchBtn = styled.div`
 		cursor: pointer;
 	}
 `;
-const BtnImg = styled.img``;
+const BtnImg = styled.img`
+	width: calc(100% - 20px);
+`;
 const Companies = styled.div`
-	min-height: calc(100vh - 277px - 120px - 5px - 86px);
-	display: grid;
+	position: relative;
 
-	grid-template-rows: repeat(${(props) => (props.rows ? props.rows : "1")}, 60px);
-	grid-template-columns: repeat(8, 150px);
-	grid-template-areas: ${(props) => {
-		if (props.searchStatus === "done") {
-			return '"test . . ."';
-		} else {
-			return "'. result result reusult result result result .'";
-		}
-	}};
-	justify-content: center;
-	justify-items: center;
-	align-items: center;
+	width: 1200px;
+
+	left: calc(50% - 600px);
+	min-height: calc(100vh - 277px - 120px - 5px - 86px - 140px);
+	overflow: scroll;
+
+	margin-bottom: 70px;
 `;
-const Result = styled.div`
-	grid-area: result;
+const Equi = styled.div`
+	display: none;
 `;
-// const Nothing = styled.div``;
+const Title = styled.div`
+	width: 250px;
+`;
+const Address = styled.div`
+	width: 550px;
+
+	overflow: hidden;
+`;
+const Contact = styled.div``;
 
 export default Search;

@@ -465,7 +465,26 @@ class YSSMap extends Component {
 									})}
 								</SearchBar>
 							</SearchContainer>
-							<ResultContainer>{this.makeResult()}</ResultContainer>
+							<ResultContainer>
+								{this.makeResult()}
+								<div
+									style={{
+										position: "relative",
+										top: "calc(100% - 25px)",
+										zIndex: "9999",
+										height: "20px",
+										fontSize: "12px",
+										color: "black",
+										width: "390px",
+										fontWeight: 700,
+										backgroundColor: "rgba(0,0,0,0.1)",
+										textAlign: "center",
+										padding: "5px",
+									}}
+								>
+									<span>※ 기능상 위치나 정보에 오류가 있을 수 있습니다.</span>
+								</div>
+							</ResultContainer>
 						</>
 					) : (
 						<>Loading</>
@@ -554,7 +573,7 @@ const ResultContainer = styled.div`
 	width: 390px;
 	height: calc(100% - 200px);
 	background-color: rgba(255, 255, 255, 0.1);
-
+	align-items: center;
 	overflow: scroll;
 `;
 const Result = styled.div`
