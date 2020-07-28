@@ -50,12 +50,17 @@ const List = () => {
 const Creator = () => {
 	return (
 		<Container>
-			<img
-				src="/img/continue_page.png"
-				alt=""
-				style={{ position: "absolute", left: "50%", margin: "0 0 0 -1000px", zIndex: "-1" }}
-			/>
 			<Head />
+			<img
+				src="/img/creator_img.png"
+				alt=""
+				style={{ position: "relative", left: "50%", margin: "0 0 0 -1000px", zIndex: "-1" }}
+			/>
+			<img
+				src="/img/copyright.png"
+				alt=""
+				style={{ position: "relative", left: "50%", margin: "0 0 0 -1000px", zIndex: "-1" }}
+			/>
 		</Container>
 	);
 };
