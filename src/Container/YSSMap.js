@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import icon from "./icon/off_location_ico.png";
-import iconRed from "./icon/current_location_ico.png";
+import icon from "../icon/off_location_ico.png";
+import iconRed from "../icon/current_location_ico.png";
 
-import data from "./mockup.json";
-
-class App extends Component {
+class YSSMap extends Component {
 	state = {
 		isLoading: false,
 		toggle: true,
@@ -23,12 +21,6 @@ class App extends Component {
 		),
 		myPosition: {},
 		companies: [],
-		response: {
-			status: data.status,
-			message: data.message,
-			success: data.success,
-			info: data.info,
-		},
 		service: new window.kakao.maps.services.Places(),
 		currentLocationOn: false,
 		guInfomation: [
@@ -656,4 +648,4 @@ const ResultContact = styled.p`
 // 	font-size: 12px;
 // `;
 
-export default App;
+export default YSSMap;
