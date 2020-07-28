@@ -66,8 +66,7 @@ class App extends Component {
 		],
 	};
 	componentDidMount() {
-		console.log(this.state.response.info);
-		const { currentLocationOn, companies } = this.state;
+		const { currentLocationOn } = this.state;
 		let mapContainer = document.getElementById("kakao-map");
 		let myPosition = [];
 		currentLocationOn
@@ -120,7 +119,6 @@ class App extends Component {
 			res
 				.json()
 				.then((json) => {
-					console.log(json);
 					let marker = new window.kakao.maps.Marker();
 					if (!json.success) {
 						console.log("false");
@@ -137,7 +135,6 @@ class App extends Component {
 		);
 	};
 	sendGuInfo = (value) => {
-		console.log(value);
 		for (let i = 0; i < this.state.guInfomation.length; i++) {
 			if (this.state.guInfomation[i].name === value) {
 				this.resetMarkers();
@@ -150,7 +147,6 @@ class App extends Component {
 					res
 						.json()
 						.then((json) => {
-							console.log(json);
 							let marker = new window.kakao.maps.Marker();
 							if (!json.success) {
 								console.log("false");
@@ -656,8 +652,8 @@ const ResultContact = styled.p`
 
 	font-size: 12px;
 `;
-const ResultBody = styled.p`
-	font-size: 12px;
-`;
+// const ResultBody = styled.p`
+// 	font-size: 12px;
+// `;
 
 export default App;
