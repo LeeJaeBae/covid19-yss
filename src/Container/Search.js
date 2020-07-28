@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../Components/Header";
 
-const Container = styled.div``;
-export default function Search() {
+const Search = () => {
 	return (
 		<Container>
 			<Header />
@@ -14,4 +13,8 @@ export default function Search() {
 			/>
 		</Container>
 	);
-}
+};
+// styled-components
+const Container = styled.div``;
+
+export default Search;

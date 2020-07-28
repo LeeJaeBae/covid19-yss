@@ -8,7 +8,7 @@ export default function Home() {
 	return (
 		<Container>
 			<img
-				src="/img/map_main.png"
+				src="/img/page/home/home.png"
 				alt=""
 				style={{
 					position: "absolute",

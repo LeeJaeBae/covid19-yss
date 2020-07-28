@@ -440,7 +440,7 @@ class YSSMap extends Component {
 						<>
 							<SearchContainer>
 								<img
-									src="/img/map_top_bg.jpg"
+									src="/img/page/map/map_top_bg.jpg"
 									alt=""
 									style={{
 										position: "absolute",
@@ -450,7 +450,7 @@ class YSSMap extends Component {
 								/>
 								<a href="/">
 									<Menu>
-										<img src="/img/list_menu_button.png" alt="" />
+										<img src="/img/page/map/list_menu_button.png" alt="" />
 									</Menu>
 								</a>
 								<SearchBar
@@ -460,7 +460,6 @@ class YSSMap extends Component {
 										this.sendGuInfo(value);
 									}}
 								>
-									{" "}
 									<SearchOption value={false}>지역구를 선택하세요.</SearchOption>
 									{this.state.guInfomation.map((element) => {
 										return (
@@ -469,44 +468,7 @@ class YSSMap extends Component {
 											</SearchOption>
 										);
 									})}
-									{/* <SearchOption value="">========지역구=======</SearchOption>
-									<SearchOption value="강남구">강남구</SearchOption>
-									<SearchOption value="강동구">강동구</SearchOption>
-									<SearchOption value="강북구">강북구</SearchOption>
-									<SearchOption value="강서구">강서구</SearchOption>
-									<SearchOption value="관악구">관악구</SearchOption>
-									<SearchOption value="광진구">광진구</SearchOption>
-									<SearchOption value="구로구">구로구</SearchOption>
-									<SearchOption value="금천구">금천구</SearchOption>
-									<SearchOption value="노원구">노원구</SearchOption>
-									<SearchOption value="동대문구">동대문구</SearchOption>
-									<SearchOption value="도봉구">도봉구</SearchOption>
-									<SearchOption value="동작구">동작구</SearchOption>
-									<SearchOption value="마포구">마포구</SearchOption>
-									<SearchOption value="서대문구">서대문구</SearchOption>
-									<SearchOption value="서초구">서초구</SearchOption>
-									<SearchOption value="성동구">성동구</SearchOption>
-									<SearchOption value="성북구">성북구</SearchOption>
-									<SearchOption value="송파구">송파구</SearchOption>
-									<SearchOption value="양천구">양천구</SearchOption>
-									<SearchOption value="영등포구">영등포구</SearchOption>
-									<SearchOption value="용산구">용산구</SearchOption>
-									<SearchOption value="은평구">은평구</SearchOption>
-									<SearchOption value="종로구">종로구</SearchOption>
-									<SearchOption value="중구">중구</SearchOption>
-									<SearchOption value="중랑구">중랑구</SearchOption> */}
 								</SearchBar>
-								{/* <SearchBtn src="/img/search_ico.png" onClick={this.sendGuInfo}>
-									<img
-										src="/img/search_ico.png"
-										alt=""
-										style={{
-											position: "relative",
-											left: "calc(50% - 10px)",
-											top: "calc(50% - 10px)",
-										}}
-									/>
-								</SearchBtn> */}
 							</SearchContainer>
 							<ResultContainer>{this.makeResult()}</ResultContainer>
 						</>

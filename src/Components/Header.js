@@ -44,16 +44,16 @@ export default function Header() {
 	return (
 		<Head>
 			<A grid="a" href="/">
-				<ButtonLogo src="/img/logo.gif" />
+				<ButtonLogo src="/img/partials/header/logo.gif" />
 			</A>
 			<A grid="b" href="/map">
-				<ButtonMap src="/img/menu01.gif" />
+				<ButtonMap src="/img/partials/header/menu01.gif" />
 			</A>
 			<A grid="c" href="/search">
-				<ButtonList src="/img/menu02.gif" />
+				<ButtonList src="/img/partials/header/menu02.gif" />
 			</A>
 			<A grid="d" href="/creator">
-				<ButtonCreator src="/img/menu03.gif" />
+				<ButtonCreator src="/img/partials/header/menu03.gif" />
 			</A>
 		</Head>
 	);

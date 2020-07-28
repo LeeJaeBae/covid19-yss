@@ -8,12 +8,12 @@ export default function Creator() {
 		<Container>
 			<Header />
 			<img
-				src="/img/creator_img.png"
+				src="/img/page/creator/creator.png"
 				alt=""
 				style={{ position: "relative", left: "50%", margin: "0 0 0 -1000px", zIndex: "-1" }}
 			/>
 			<img
-				src="/img/copyright.png"
+				src="/img/partials/footer/copyright.png"
 				alt=""
 				style={{ position: "relative", left: "50%", margin: "0 0 0 -1000px", zIndex: "-1" }}
 			/>
