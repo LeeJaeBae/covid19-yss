@@ -111,6 +111,7 @@ class YSSMap extends Component {
 			res
 				.json()
 				.then((json) => {
+					console.log(json);
 					let marker = new window.kakao.maps.Marker();
 					if (!json.success) {
 						console.log("false");
@@ -210,29 +211,33 @@ class YSSMap extends Component {
 		}
 		for (let i = 0; i < companies.length; i++) {
 			array.push(
-				<>
-					<Result
-						id={`result-${i}`}
-						// onClick={function () {
-						// 	let id = document.getElementById(`result-${i}`);
-						// 	if (id.style.height === "max-content") {
-						// 		id.style.height = "100px";
-						// 	} else {
-						// 		id.style.height = "max-content";
-						// 	}
-						// }}
-						onMouseEnter={() => {
-							this.setMarkerIcon(i, true);
-						}}
-						onMouseLeave={() => {
-							this.setMarkerIcon(i, false);
-						}}
-						onClick={() => {
-							this.setMarkerIcon(i, true);
-							let child = document.getElementById(`result-${i}-discription`);
-							child.style.display = "block";
-						}}
-					>
+				<div
+					onClick={() => {
+						const target = document.getElementById(`result-${i}-discription`);
+						const self = document.getElementById(`result-${i}`);
+						if (target.style.display === "none") {
+							target.style.display = "block";
+						} else {
+							target.style.display = "none";
+						}
+						if (self.getAttribute("clicked") === "false") {
+							self.setAttribute("clicked", "true");
+						} else {
+							self.setAttribute("clicked", "false");
+						}
+					}}
+					onMouseEnter={() => {
+						const self = document.getElementById(`result-${i}`);
+						if (self.getAttribute("clicked") === "false") this.setMarkerIcon(i, true);
+					}}
+					onMouseLeave={() => {
+						const self = document.getElementById(`result-${i}`);
+						if (self.getAttribute("clicked") === "false") this.setMarkerIcon(i, false);
+					}}
+					id={`result-${i}`}
+					clicked="false"
+				>
+					<Result>
 						<ResultTitle>{companies[i].BPLCNM}</ResultTitle>
 						<ResultAddr>
 							{companies[i].RDNWHLADDR
@@ -242,25 +247,15 @@ class YSSMap extends Component {
 						<ResultContact>
 							전화번호 : {companies[i].SITETEL ? companies[i].SITETEL : "번호 없음"}
 						</ResultContact>
-						{/* <ResultBody>관리번호 {companies[i].MGTNO}</ResultBody>
-					<ResultBody>인허가일자 {companies[i].APVPERMYMD}</ResultBody> */}
 					</Result>
-					<Result
-						id={`result-${i}-discription`}
-						onClick={() => {
-							let me = document.getElementById(`result-${i}-discription`);
-							me.style.display = "none";
-						}}
-						notColor
-						style={{ display: "none" }}
-					>
+					<Result id={`result-${i}-discription`} notColor style={{ display: "none" }}>
 						<ResultTitle style={{ fontSize: "14px" }}>보유장비현황</ResultTitle>
 						<ul>
 							<li style={{ marginTop: "10px" }}>
 								<span
 									style={{
 										fontSize: "13px",
-										width: "125px",
+										width: "120px",
 										display: "inline-block",
 										color: "#919191",
 									}}
@@ -280,7 +275,7 @@ class YSSMap extends Component {
 								<span
 									style={{
 										fontSize: "13px",
-										width: "125px",
+										width: "120px",
 										display: "inline-block",
 										color: "#919191",
 									}}
@@ -302,7 +297,7 @@ class YSSMap extends Component {
 								<span
 									style={{
 										fontSize: "13px",
-										width: "125px",
+										width: "120px",
 										display: "inline-block",
 										color: "#919191",
 									}}
@@ -322,7 +317,7 @@ class YSSMap extends Component {
 								<span
 									style={{
 										fontSize: "13px",
-										width: "125px",
+										width: "120px",
 										display: "inline-block",
 										color: "#919191",
 									}}
@@ -344,7 +339,7 @@ class YSSMap extends Component {
 								<span
 									style={{
 										fontSize: "13px",
-										width: "125px",
+										width: "120px",
 										display: "inline-block",
 										color: "#919191",
 									}}
@@ -364,7 +359,7 @@ class YSSMap extends Component {
 								<span
 									style={{
 										fontSize: "13px",
-										width: "125px",
+										width: "120px",
 										display: "inline-block",
 										color: "#919191",
 									}}
@@ -386,7 +381,7 @@ class YSSMap extends Component {
 								<span
 									style={{
 										fontSize: "13px",
-										width: "125px",
+										width: "120px",
 										display: "inline-block",
 										color: "#919191",
 									}}
@@ -406,7 +401,7 @@ class YSSMap extends Component {
 								<span
 									style={{
 										fontSize: "13px",
-										width: "125px",
+										width: "120px",
 										display: "inline-block",
 										color: "#919191",
 									}}
@@ -426,7 +421,7 @@ class YSSMap extends Component {
 							</li>
 						</ul>
 					</Result>
-				</>
+				</div>
 			);
 		}
 		return array;
@@ -554,18 +549,6 @@ const SearchOption = styled.option`
 	}
 `;
 
-// const SearchBtn = styled.div`
-// 	position: absolute;
-// 	width: 60px;
-// 	height: 40px;
-// 	border-radius: 4px;
-// 	left: 0px;
-// 	top: 120px;
-// 	background-color: white;
-// 	:hover {
-// 		cursor: pointer;
-// 	}
-// `;
 const ResultContainer = styled.div`
 	position: absolute;
 	width: 390px;
