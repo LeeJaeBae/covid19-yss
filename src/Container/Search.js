@@ -19,7 +19,6 @@ class Search extends Component {
 			body: JSON.stringify(searchTerm),
 		}).then((res) =>
 			res.json().then((json) => {
-				console.log(json);
 				term.value = "";
 				if (json.info.length < 1) {
 					this.setState({ searchStatus: "nothing" });
@@ -35,50 +34,7 @@ class Search extends Component {
 			case "standby":
 				return <Companies />;
 			case "pending":
-				return (
-					<Companies>
-						(
-						<div className="list_wrap">
-							<div className="list_box">
-								<ul>
-									<li className="tit">대아환경(주)</li>
-									<li>서울특별시 강서구 화곡로24길 43 2층 (화곡동)</li>
-									<li>02-3446-3301</li>
-								</ul>
-								<div className="equi_btn">
-									<a href="#">
-										<img
-											src="/img/page/search/page3_list_btn.gif"
-											alt="보유장비 보기"
-										/>
-									</a>
-								</div>
-								{/* <!-- 보유장비보기 목록 --> */}
-
-								{/* <!-- //보유장비보기 목록 --> */}
-							</div>
-
-							{/* <!-- // 구분선 --> */}
-
-							<div className="list_box">
-								<ul>
-									<li className="tit">대아환경(주)</li>
-									<li>서울특별시 강서구 화곡로24길 43 2층 (화곡동)</li>
-									<li>02-3446-3301</li>
-								</ul>
-								<div className="equi_btn">
-									<a href="#">
-										<img
-											src="/img/page/search/page3_list_btn.gif"
-											alt="보유장비 보기"
-										/>
-									</a>
-								</div>
-							</div>
-						</div>
-						);
-					</Companies>
-				);
+				return;
 			case "nothing":
 				return (
 					<div className="list_wrap">
@@ -92,7 +48,6 @@ class Search extends Component {
 					</div>
 				);
 			case "done":
-				console.log(this.state.searchResult);
 				const companies = this.state.searchResult;
 
 				let array = [];
@@ -108,7 +63,6 @@ class Search extends Component {
 										{companies[i].RDNWHLADDR
 											? companies[i].RDNWHLADDR
 											: companies[i].SITEWHLADDR}
-										{/* asfsdafawifebafiowabfiouwebweipubfaweoibwfesadfaewhbfoasdfasdfaiewbofiwebafiweabfoewaf */}
 									</Address>
 								</li>
 								<li>
@@ -193,7 +147,11 @@ class Search extends Component {
 						</div>
 					);
 				}
-				return <div className="list_wrap">{array}</div>;
+				return (
+					<div className="list_wrap" id="no-scroll">
+						{array}
+					</div>
+				);
 			default:
 				break;
 		}
@@ -218,7 +176,7 @@ class Search extends Component {
 						<BtnImg src="/img/page/search/page3_search_btn.gif" />
 					</SearchBtn>
 				</SearchContainer>
-				<Companies>{this.searchPost()}</Companies>
+				<Companies id="no-scroll">{this.searchPost()}</Companies>
 				<Footer src="/img/partials/footer/copyright.png" />
 			</Container>
 		);
