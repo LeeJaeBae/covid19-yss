@@ -79,6 +79,10 @@ class Search extends Component {
 									cursor: "pointer",
 								}}
 								onClick={() => {
+									for (let j = 0; j < companies.length; j++) {
+										let reset = document.getElementById(`equi-box-${j}`);
+										reset.style.display = "none";
+									}
 									let target = document.getElementById(`equi-box-${i}`);
 									target.style.display = "block";
 								}}
@@ -147,11 +151,7 @@ class Search extends Component {
 						</div>
 					);
 				}
-				return (
-					<div className="list_wrap" id="no-scroll">
-						{array}
-					</div>
-				);
+				return <div className="list_wrap">{array}</div>;
 			default:
 				break;
 		}
@@ -176,7 +176,7 @@ class Search extends Component {
 						<BtnImg src="/img/page/search/page3_search_btn.gif" />
 					</SearchBtn>
 				</SearchContainer>
-				<Companies id="no-scroll">{this.searchPost()}</Companies>
+				<Companies>{this.searchPost()}</Companies>
 				<Footer src="/img/partials/footer/copyright.png" />
 			</Container>
 		);
@@ -265,8 +265,6 @@ const Companies = styled.div`
 
 	left: calc(50% - 600px);
 	min-height: calc(100vh - 277px - 120px - 5px - 86px - 140px);
-	overflow: scroll;
-
 	margin-bottom: 70px;
 `;
 const Equi = styled.div`
